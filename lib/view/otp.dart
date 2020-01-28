@@ -8,6 +8,7 @@ class Otp extends StatefulWidget {
 }
 
 class OtpState extends State<Otp> {
+  String otp = "";
   TextEditingController controller1 = new TextEditingController();
   TextEditingController controller2 = new TextEditingController();
   TextEditingController controller3 = new TextEditingController();
@@ -398,6 +399,7 @@ class OtpState extends State<Otp> {
                           MaterialButton(
                               onPressed: () {
                                 matchOtp();
+                                cekotp(otp);
                               },
                               child: Image.asset('assets/images/success.png',
                                   width: 25.0, height: 25.0)),
@@ -472,21 +474,47 @@ class OtpState extends State<Otp> {
     }
   }
 
-  void matchOtp() {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Successfully"),
-            content: Text("Otp matched successfully"),
-            actions: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.check),
+  void cekotp(String str) {
+    if (otp == "12345") {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Successfully"),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.done),
                   onPressed: () {
                     Navigator.of(context).pop();
-                  })
-            ],
-          );
-        });
+                  },
+                )
+              ],
+            );
+          });
+    } else {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Failed"),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.warning),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    }
+  }
+
+  void matchOtp() {
+    otp = controller1.text +
+        controller2.text +
+        controller3.text +
+        controller4.text +
+        controller5.text;
   }
 }
