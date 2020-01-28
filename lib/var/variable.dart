@@ -1,1 +1,1 @@
-String Homescreen = '/home', Otpscreen = '/otp';
+String Homescreen = '/home', Otpscreen = '/otp', Dashboardscrn = '/dashboard';

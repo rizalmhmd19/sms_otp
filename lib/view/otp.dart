@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:otp_2/main.dart';
+import 'package:otp_2/var/variable.dart';
 
 class Otp extends StatefulWidget {
   @override
@@ -476,21 +477,22 @@ class OtpState extends State<Otp> {
 
   void cekotp(String str) {
     if (otp == "12345") {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text("Successfully"),
-              actions: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.done),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
-            );
-          });
+      // showDialog(
+      //     context: context,
+      //     builder: (BuildContext context) {
+      //       return AlertDialog(
+      //         title: Text("Successfully"),
+      //         actions: <Widget>[
+      //           IconButton(
+      //             icon: Icon(Icons.done),
+      //             onPressed: () {
+      //               Navigator.of(context).pop();
+      //             },
+      //           )
+      //         ],
+      //       );
+      //     });
+      Navigator.pushReplacementNamed(context, Dashboardscrn);
     } else {
       showDialog(
           context: context,
